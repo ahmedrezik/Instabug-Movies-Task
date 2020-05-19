@@ -22,7 +22,7 @@ enum Endpoints {
     
     
     //Cases
-    case discover
+    case discover(Int)
     case PosterImage(String)
 
     
@@ -30,7 +30,7 @@ enum Endpoints {
     //String Value
     var StringValue: String{
         switch self {
-        case .discover: return Endpoints.base + "/discover/movie" + Endpoints.apiKeyParam
+        case .discover(let pageNumber): return Endpoints.base + "/discover/movie" + Endpoints.apiKeyParam + "&page=\(pageNumber)"
         case .PosterImage(let posterpath):
                        return "https://image.tmdb.org/t/p/w500/" + posterpath
         }
@@ -68,9 +68,9 @@ public class func downloadPosterImage(path:String, completion: @escaping (Data?,
  }
     
     //MARK:- Get Request for Discoverin Movies
-public class func getMoviePopular(completion: @escaping (Bool,Error?) -> Void){
+    public class func getMoviePopular(pageNumber: Int, completion: @escaping (Bool,Error?) -> Void){
     
-    let task = URLSession.shared.dataTask(with: Endpoints.discover.url) { (data, response, error) in
+    let task = URLSession.shared.dataTask(with: Endpoints.discover(pageNumber).url) { (data, response, error) in
         
         guard let data = data else{
             completion(false,error)

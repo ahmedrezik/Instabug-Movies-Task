@@ -11,7 +11,7 @@ import Foundation
 public class ClassesModel{
     //MARK:- TableView DataSource
     static var searchList = [Movie]()
-    
+    static var userMovies = [Movie]()
     
     
  

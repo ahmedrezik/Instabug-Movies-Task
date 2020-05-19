@@ -18,6 +18,8 @@
 		E2CB71232473D50400C32CBD /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB71222473D50400C32CBD /* MovieModel.swift */; };
 		E2CB71252473D54B00C32CBD /* SearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB71242473D54B00C32CBD /* SearchResults.swift */; };
 		E2CB71272473D60600C32CBD /* ClassesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB71262473D60600C32CBD /* ClassesModel.swift */; };
+		E2CB712A2473DAF200C32CBD /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB71292473DAF200C32CBD /* DiscoverVC.swift */; };
+		E2CB712D2473E00F00C32CBD /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB712C2473E00F00C32CBD /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		E2CB71222473D50400C32CBD /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		E2CB71242473D54B00C32CBD /* SearchResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResults.swift; sourceTree = "<group>"; };
 		E2CB71262473D60600C32CBD /* ClassesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesModel.swift; sourceTree = "<group>"; };
+		E2CB71292473DAF200C32CBD /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
+		E2CB712C2473E00F00C32CBD /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			children = (
 				E2CB70EF2473CBA700C32CBD /* AppDelegate.swift */,
 				E2CB70F12473CBA700C32CBD /* SceneDelegate.swift */,
+				E2CB712B2473DFFA00C32CBD /* Controller */,
 				E2CB71212473CC1E00C32CBD /* Model */,
 				E2CB71282473D8D700C32CBD /* View */,
 				E2CB70FD2473CBA800C32CBD /* Info.plist */,
@@ -151,6 +156,15 @@
 				E2CB70FA2473CBA800C32CBD /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E2CB712B2473DFFA00C32CBD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB71292473DAF200C32CBD /* DiscoverVC.swift */,
+				E2CB712C2473E00F00C32CBD /* MovieCell.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +299,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2CB71232473D50400C32CBD /* MovieModel.swift in Sources */,
+				E2CB712A2473DAF200C32CBD /* DiscoverVC.swift in Sources */,
+				E2CB712D2473E00F00C32CBD /* MovieCell.swift in Sources */,
 				E2CB71202473CC0F00C32CBD /* TMDBClient.swift in Sources */,
 				E2CB71272473D60600C32CBD /* ClassesModel.swift in Sources */,
 				E2CB71252473D54B00C32CBD /* SearchResults.swift in Sources */,
