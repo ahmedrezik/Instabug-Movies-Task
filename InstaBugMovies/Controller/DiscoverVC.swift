@@ -80,6 +80,7 @@ extension DiscoverVC:  UITableViewDataSource{
         let cell =  tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
         let movie = ClassesModel.searchList[indexPath.row]
         
+        cell.posterImage.image = UIImage()
         if let posterpath = movie.posterPath{
             TMDBClient.downloadPosterImage(path: posterpath) { (data, error) in
                        guard let data = data
