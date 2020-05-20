@@ -20,7 +20,7 @@
 		E2CB71272473D60600C32CBD /* ClassesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB71262473D60600C32CBD /* ClassesModel.swift */; };
 		E2CB712A2473DAF200C32CBD /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB71292473DAF200C32CBD /* DiscoverVC.swift */; };
 		E2CB712D2473E00F00C32CBD /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB712C2473E00F00C32CBD /* MovieCell.swift */; };
-		E2E39D212474B4710000E6BC /* AddCustomMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E39D202474B4710000E6BC /* AddCustomMovie.swift */; };
+		E2E39D212474B4710000E6BC /* AddCustomMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E39D202474B4710000E6BC /* AddCustomMovieVC.swift */; };
 		E2E39D232474C3690000E6BC /* CustomMovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E39D222474C3690000E6BC /* CustomMovieModel.swift */; };
 		E2E39D252474D07F0000E6BC /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E39D242474D07F0000E6BC /* MovieDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +62,7 @@
 		E2CB71262473D60600C32CBD /* ClassesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesModel.swift; sourceTree = "<group>"; };
 		E2CB71292473DAF200C32CBD /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		E2CB712C2473E00F00C32CBD /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		E2E39D202474B4710000E6BC /* AddCustomMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomMovie.swift; sourceTree = "<group>"; };
+		E2E39D202474B4710000E6BC /* AddCustomMovieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCustomMovieVC.swift; sourceTree = "<group>"; };
 		E2E39D222474C3690000E6BC /* CustomMovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMovieModel.swift; sourceTree = "<group>"; };
 		E2E39D242474D07F0000E6BC /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +92,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2C20688247507B400D23E01 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB71292473DAF200C32CBD /* DiscoverVC.swift */,
+				E2E39D202474B4710000E6BC /* AddCustomMovieVC.swift */,
+				E2E39D242474D07F0000E6BC /* MovieDetailView.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E2C20689247507C200D23E01 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB712C2473E00F00C32CBD /* MovieCell.swift */,
+			);
+			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
 		E2CB70E32473CBA600C32CBD = {
 			isa = PBXGroup;
 			children = (
@@ -168,10 +186,8 @@
 		E2CB712B2473DFFA00C32CBD /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E2CB71292473DAF200C32CBD /* DiscoverVC.swift */,
-				E2CB712C2473E00F00C32CBD /* MovieCell.swift */,
-				E2E39D202474B4710000E6BC /* AddCustomMovie.swift */,
-				E2E39D242474D07F0000E6BC /* MovieDetailView.swift */,
+				E2C20688247507B400D23E01 /* View Controllers */,
+				E2C20689247507C200D23E01 /* TableView Cells */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,7 +330,7 @@
 				E2CB71272473D60600C32CBD /* ClassesModel.swift in Sources */,
 				E2E39D232474C3690000E6BC /* CustomMovieModel.swift in Sources */,
 				E2CB71252473D54B00C32CBD /* SearchResults.swift in Sources */,
-				E2E39D212474B4710000E6BC /* AddCustomMovie.swift in Sources */,
+				E2E39D212474B4710000E6BC /* AddCustomMovieVC.swift in Sources */,
 				E2CB70F02473CBA700C32CBD /* AppDelegate.swift in Sources */,
 				E2CB70F22473CBA700C32CBD /* SceneDelegate.swift in Sources */,
 				E2E39D252474D07F0000E6BC /* MovieDetailView.swift in Sources */,

@@ -10,25 +10,25 @@ import XCTest
 @testable import InstaBugMovies
 
 class InstaBugMoviesTests: XCTestCase {
-
+    var sut: DiscoverVC!
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        try? super.setUpWithError()
+      sut = UIStoryboard(name: "Main", bundle: nil)
+      .instantiateInitialViewController() as? DiscoverVC
+    }
+    override class func setUp() {
+          super.setUp()
+          
+        
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
+        super.tearDown()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+ 
 
 }

@@ -67,7 +67,7 @@ public class func downloadPosterImage(path:String, completion: @escaping (Data?,
      task.resume()
  }
     
-    //MARK:- Get Request for Discoverin Movies
+    //MARK:- Get Request for Discover Movies
     public class func getMoviePopular(pageNumber: Int, completion: @escaping (Bool,Error?) -> Void){
     
     let task = URLSession.shared.dataTask(with: Endpoints.discover(pageNumber).url) { (data, response, error) in

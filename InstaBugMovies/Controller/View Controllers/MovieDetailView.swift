@@ -11,12 +11,13 @@ import UIKit
 public class MovieDetailView: UIViewController{
     
     var overviewText:String!
-    
+    var Viewtitle: String!
     @IBOutlet weak var overViewField: UITextView!
     
     
     
     public override func viewWillAppear(_ animated: Bool) {
+        title = Viewtitle
         overViewField.text = overviewText
        
     }

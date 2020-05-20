@@ -11,12 +11,14 @@ import UIKit
 
 public class DiscoverVC: UIViewController{
 //MARK:- Instance Vriables
+    
     fileprivate var activityIndicator: LoadMoreActivityIndicator!
     @IBOutlet weak var discoverTableView: UITableView!
-    
+
     static var pagenumber = 1
     var selectedSection = 0
     var selectedIndex = 0
+    var ImagesCache = [Int:UIImage]()
     
     @IBAction func AddMovie(_ sender: Any) {
         
@@ -24,7 +26,9 @@ public class DiscoverVC: UIViewController{
     }
     //MARK: VIEW LIFECYCLE METHODS
     public override func viewDidLoad() {
+        
         activityIndicator = LoadMoreActivityIndicator(scrollView: discoverTableView, spacingFromLastCell: 10, spacingFromLastCellWhenLoadMoreActionStart: 60)
+        //Observers whether the User added a New Movie or not
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: Notification.Name("didCreateMovie"), object: nil)
     }
     
@@ -45,8 +49,10 @@ public class DiscoverVC: UIViewController{
             switch selectedSection {
             case 0:
                 destination.overviewText = ClassesModel.userMovies[selectedIndex].overview
+                destination.Viewtitle = ClassesModel.userMovies[selectedIndex].title
             case 1:
                 destination.overviewText = ClassesModel.searchList[selectedIndex].overview
+                destination.Viewtitle = ClassesModel.searchList[selectedIndex].title
             default:
                 break
             }
@@ -75,6 +81,8 @@ public class DiscoverVC: UIViewController{
 
 //MARK:- TableView DataSource Extension
 extension DiscoverVC:  UITableViewDataSource{
+    
+    //Count of rows in ech section
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0: return ClassesModel.userMovies.count
@@ -84,9 +92,13 @@ extension DiscoverVC:  UITableViewDataSource{
             return 0
         }
     }
+    
+    //No.of sections in the TableView
     public func numberOfSections(in tableView: UITableView) -> Int {
        return 2
     }
+    
+    //Title for each section
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
@@ -103,14 +115,19 @@ extension DiscoverVC:  UITableViewDataSource{
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
         
-        cell.posterImage.image = UIImage()
+        
         
         if indexPath.section == 0 {
+            cell.posterImage.image = UIImage()
             let movie = ClassesModel.userMovies[indexPath.row]
-            if let posterImage = movie.posterImage{
-                cell.posterImage.image = posterImage
+            
+            if let posterimage = movie.posterImage {
+                
+                cell.posterImage.image = posterimage
                 
             }
+                
+            
             else{
                 cell.posterImage.image = UIImage(named: "placeholder")
             }
@@ -122,7 +139,11 @@ extension DiscoverVC:  UITableViewDataSource{
         }
         
         let movie = ClassesModel.searchList[indexPath.row]
-        
+        cell.posterImage.image = UIImage()
+        if let image = ImagesCache[movie.id] {
+            cell.posterImage.image = image
+        }
+        else{
         if let posterpath = movie.posterPath{
             TMDBClient.downloadPosterImage(path: posterpath) { (data, error) in
                        guard let data = data
@@ -130,15 +151,17 @@ extension DiscoverVC:  UITableViewDataSource{
                             return
                 }
                 DispatchQueue.main.async {
+                    
                     let posterImage = UIImage(data: data)
                     cell.posterImage.image = posterImage
+                    self.ImagesCache[movie.id] = posterImage
                 }
                 
                    }
         }
         else{
             cell.posterImage.image = UIImage(named: "placeholder")
-        }
+            }}
         
         
         let releaseYear = String(movie.releaseDate.prefix(4))
@@ -149,7 +172,7 @@ extension DiscoverVC:  UITableViewDataSource{
         
         
     }
-
+   
 }
 
 //MARK:- Table View Delegate Extension
