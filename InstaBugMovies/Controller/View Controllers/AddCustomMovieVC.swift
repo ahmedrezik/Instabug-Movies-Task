@@ -10,15 +10,11 @@ import Foundation
 import UIKit
 
 public class AddMovieVC: UIViewController{
-     var imagePicker = UIImagePickerController()
+     var imagePicker = UIImagePickerController() //Photos Album Image Picke
+    
     @IBOutlet weak var MovieTitleField: UITextField!
-    
     @IBOutlet weak var YearPicker: UIPickerView!
-    
-    
-    
     @IBOutlet weak var overviewField: UITextView!
-    
     @IBOutlet weak var posterView: UIImageView!
     
     
@@ -36,6 +32,7 @@ public class AddMovieVC: UIViewController{
               }
     }
     
+    
     @IBAction func Save(_ sender: Any) {
         let YearIndex = YearPicker.selectedRow(inComponent: 0)
         let NewMovie =  CustomMovie(title: MovieTitleField.text ?? "",
@@ -52,14 +49,20 @@ public class AddMovieVC: UIViewController{
     public override func viewDidLoad() {
         overviewFieldSetup()
     }
+    
+    //Adds a border around the overview textfield for visibilty
     func overviewFieldSetup(){
+        overviewField.text = "Enter Movie Overview"
+        overviewField.textColor = .lightGray
         overviewField.backgroundColor = .white
         overviewField.layer.borderWidth = 1.5
         overviewField.layer.cornerRadius = 10
+        overviewField.accessibilityIdentifier = "OverviewTextView"
     }
     
 }
 
+//MARK:- Year Picker View Delegate & DataSource
 extension AddMovieVC: UIPickerViewDelegate, UIPickerViewDataSource{
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -74,6 +77,8 @@ extension AddMovieVC: UIPickerViewDelegate, UIPickerViewDataSource{
     
     
 }
+
+//MARK:- IMage Picker Delegate & Data Source
 extension AddMovieVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
    
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -83,5 +88,28 @@ extension AddMovieVC: UIImagePickerControllerDelegate, UINavigationControllerDel
                   fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
               }
         posterView.image = image
+    }
+}
+
+//MARK:- OVerviewTextView Delegate
+extension AddMovieVC: UITextViewDelegate{
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+}
+
+extension AddMovieVC: UITextFieldDelegate{
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       self.view.endEditing(true)
+        return true
+    }
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        self.view.endEditing(true)
+    }
+    public  func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        self.view.endEditing(true)
     }
 }

@@ -10,6 +10,8 @@ import Foundation
 
 public class TMDBClient{
 
+    
+    
 //MARK:- Endpoints
 enum Endpoints {
     //enum Constants
@@ -45,7 +47,6 @@ enum Endpoints {
    
 }
 
-//MARK:- URL Requests
 
 
 //MARK:- Get Request for Downloading Images
