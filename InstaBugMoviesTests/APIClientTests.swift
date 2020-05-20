@@ -10,33 +10,8 @@ import XCTest
 @testable import InstaBugMovies
 
 class APIClientTests: XCTestCase {
-    var sut: DiscoverVC!
-    //var sut2: TMDBClient!
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        try? super.setUpWithError()
-        sut = DiscoverVC()
-        
 
-    }
-    override func setUp() {
-          super.setUp()
         
-    
-       
-        
-    }
-    
-//    func testSelectedIndexisEqualSelectedCell(){
-//        performSelector(onMainThread: #selector(selectcell), with: .none, waitUntilDone: true)
-//        XCTAssertEqual(sut.selectedIndex, 3, "They should be equal")
-//    }
-    
-    
-//    @objc func selectcell(){
-//        sut.discoverTableView.selectRow(at: IndexPath(row: 3, section: 1), animated: true, scrollPosition: .none)
-//    }
-    
     func testMovieDownload(){
         let exp = expectation(description: "Loading Movies")
         TMDBClient.getMoviePopular(pageNumber: 1) { (data, _) in
@@ -70,16 +45,7 @@ class APIClientTests: XCTestCase {
 
     
     
-    override func tearDown() {
-        sut = nil
-        super.tearDown()
-    }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        sut = nil
-        super.tearDown()
-    }
 
  
 

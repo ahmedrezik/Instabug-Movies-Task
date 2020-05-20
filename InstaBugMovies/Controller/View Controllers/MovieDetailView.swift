@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 public class MovieDetailView: UIViewController{
     
-    var overviewText:String!
-    var Viewtitle: String!
+    var overviewText:String! //title for Vc
+    var Viewtitle: String! //The overview to be displayed
     @IBOutlet weak var overViewField: UITextView!
     
     

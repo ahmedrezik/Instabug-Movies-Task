@@ -12,13 +12,13 @@ import UIKit
 public class DiscoverVC: UIViewController{
 //MARK:- Instance Vriables
     
-    fileprivate var activityIndicator: LoadMoreActivityIndicator!
+    fileprivate var activityIndicator: LoadMoreActivityIndicator! //Loading pages activity indicator
     @IBOutlet weak var discoverTableView: UITableView!
 
-    static var pagenumber = 1
-    var selectedSection = 1
-    var selectedIndex = 1
-    var ImagesCache = [Int:UIImage]()
+    static var pagenumber = 1 // The page number for the Network Call
+    var selectedSection = 1 //Used for DetailView Segue
+    var selectedIndex = 1 // Use for DetailView Segue
+    var ImagesCache = [Int:UIImage]() //Cache already downloaded Images to save Network bandwidth and smoother UI
     
    
     //MARK: VIEW LIFECYCLE METHODS
@@ -34,6 +34,7 @@ public class DiscoverVC: UIViewController{
         //Observers whether the User added a New Movie or not
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: Notification.Name("didCreateMovie"), object: nil)
         
+        //Added Accessibilty identifier for Testing purposes
         discoverTableView.accessibilityIdentifier = "DiscoverTableView"
         
     }
@@ -43,7 +44,7 @@ public class DiscoverVC: UIViewController{
         discoverTableView.reloadData()
     }
     
-  
+  //MARK:- PrepareForSegue
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "overview" {
             let destination = segue.destination as! MovieDetailView
@@ -60,7 +61,7 @@ public class DiscoverVC: UIViewController{
         }
     }
    
-  //MARK:- Privte class Funcs
+  //MARK:- API Response Handler
     private func handleResponse(success:Bool,error:Error?){
         
         if(success){
@@ -112,7 +113,7 @@ extension DiscoverVC:  UITableViewDataSource{
         }
     }
 
-    
+    //Dequeue Cell
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
  

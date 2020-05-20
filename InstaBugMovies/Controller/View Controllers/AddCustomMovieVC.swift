@@ -18,7 +18,7 @@ public class AddMovieVC: UIViewController{
     @IBOutlet weak var posterView: UIImageView!
     
     
-    
+    //MARK:- UIImagePicker controller Button
     @IBAction func pickPhoto(_ sender: Any) {
         
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
@@ -32,14 +32,18 @@ public class AddMovieVC: UIViewController{
               }
     }
     
-    
+    //MARK:- New Custom Movie Created
     @IBAction func Save(_ sender: Any) {
         let YearIndex = YearPicker.selectedRow(inComponent: 0)
+        //New Movie to Be added
         let NewMovie =  CustomMovie(title: MovieTitleField.text ?? "",
                                     releaseYear: String(ClassesModel.Years[YearIndex]),
                                     posterImage: posterView.image,
                                     overview: overviewField.text)
+        
         ClassesModel.userMovies.append(NewMovie)
+        
+        //Post Notification that a movie has been added
         NotificationCenter.default.post(name: Notification.Name("didCreateMovie"), object: nil)
         dismiss(animated: true, completion: nil)
         
@@ -101,6 +105,7 @@ extension AddMovieVC: UITextViewDelegate{
     }
 }
 
+//MARK:- TextField Delegagte
 extension AddMovieVC: UITextFieldDelegate{
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        self.view.endEditing(true)
