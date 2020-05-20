@@ -11,8 +11,9 @@ import Foundation
 public class ClassesModel{
     //MARK:- TableView DataSource
     static var searchList = [Movie]()
-    static var userMovies = [Movie]()
+    static var userMovies = [CustomMovie]()
     
-    
+    //MARK:- PickerView Datasource
+    static var Years = Array(1970...2030)
  
 }

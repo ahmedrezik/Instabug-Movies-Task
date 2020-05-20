@@ -10,26 +10,50 @@ import Foundation
 import UIKit
 
 public class DiscoverVC: UIViewController{
-    
+//MARK:- Instance Vriables
     fileprivate var activityIndicator: LoadMoreActivityIndicator!
     @IBOutlet weak var discoverTableView: UITableView!
+    
     static var pagenumber = 1
-   
+    var selectedSection = 0
+    var selectedIndex = 0
     
     @IBAction func AddMovie(_ sender: Any) {
         
         
     }
+    //MARK: VIEW LIFECYCLE METHODS
     public override func viewDidLoad() {
         activityIndicator = LoadMoreActivityIndicator(scrollView: discoverTableView, spacingFromLastCell: 10, spacingFromLastCellWhenLoadMoreActionStart: 60)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: Notification.Name("didCreateMovie"), object: nil)
+    }
+    
+    @objc func reloadTableView(){
+        discoverTableView.reloadData()
     }
     
     public override func viewWillAppear(_ animated: Bool) {
+        
         TMDBClient.getMoviePopular(pageNumber: DiscoverVC.pagenumber, completion: handleResponse(success:error:))
+    
+        
             
     }
-    
+    public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "overview" {
+            let destination = segue.destination as! MovieDetailView
+            switch selectedSection {
+            case 0:
+                destination.overviewText = ClassesModel.userMovies[selectedIndex].overview
+            case 1:
+                destination.overviewText = ClassesModel.searchList[selectedIndex].overview
+            default:
+                break
+            }
+        }
+    }
+   
+  //MARK:- Privte class Funcs
     private func handleResponse(success:Bool,error:Error?){
         
         if(success){
@@ -49,7 +73,7 @@ public class DiscoverVC: UIViewController{
     
 }
 
-
+//MARK:- TableView DataSource Extension
 extension DiscoverVC:  UITableViewDataSource{
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -78,9 +102,27 @@ extension DiscoverVC:  UITableViewDataSource{
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
-        let movie = ClassesModel.searchList[indexPath.row]
         
         cell.posterImage.image = UIImage()
+        
+        if indexPath.section == 0 {
+            let movie = ClassesModel.userMovies[indexPath.row]
+            if let posterImage = movie.posterImage{
+                cell.posterImage.image = posterImage
+                
+            }
+            else{
+                cell.posterImage.image = UIImage(named: "placeholder")
+            }
+            cell.TitleDateLabel.text = "\(movie.title) - \(movie.releaseYear)"
+            
+            
+            
+            return cell
+        }
+        
+        let movie = ClassesModel.searchList[indexPath.row]
+        
         if let posterpath = movie.posterPath{
             TMDBClient.downloadPosterImage(path: posterpath) { (data, error) in
                        guard let data = data
@@ -107,17 +149,10 @@ extension DiscoverVC:  UITableViewDataSource{
         
         
     }
-    
 
-    
-    
-    
-
-    
-    
-    
-    
 }
+
+//MARK:- Table View Delegate Extension
 extension DiscoverVC: UITableViewDelegate {
     
     
@@ -143,12 +178,20 @@ extension DiscoverVC: UITableViewDelegate {
             }
     }
     
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        selectedSection = indexPath.section
+        performSegue(withIdentifier: "overview", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
     
   
 
 
-
+//MARK:- Class for Activity Indicator
 class LoadMoreActivityIndicator {
 
     private let spacingFromLastCell: CGFloat

@@ -35,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="movieCell" rowHeight="170" translatesAutoresizingMaskIntoConstraints="NO" id="bfR-C7-EmU" customClass="MovieCell" customModule="InstaBugMovies" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="movieCell" rowHeight="170" translatesAutoresizingMaskIntoConstraints="NO" id="bfR-C7-EmU" customClass="MovieCell" customModule="InstaBugMovies" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bfR-C7-EmU" id="aKw-gW-ixv">
@@ -106,25 +106,110 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="31.473214285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Add MovieVC-->
         <scene sceneID="xRV-yF-9jr">
             <objects>
-                <viewController id="jUa-8J-Cl4" sceneMemberID="viewController">
+                <viewController id="jUa-8J-Cl4" customClass="AddMovieVC" customModule="InstaBugMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WT4-FV-kHo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create A Movie" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zm1-ny-RSS">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldMT" family="Times New Roman" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter movie title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yj8-3m-3qY">
+                                <rect key="frame" x="178" y="111" width="216" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yq3-59-qOX">
+                                <rect key="frame" x="223" y="444" width="178" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhU-hz-Dfz">
+                                <rect key="frame" x="38" y="493" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Choose photo"/>
+                                <connections>
+                                    <action selector="pickPhoto:" destination="jUa-8J-Cl4" eventType="touchUpInside" id="gpk-98-QGl"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ch1-Jz-kgl">
+                                <rect key="frame" x="20" y="111" width="83.5" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie Release Year" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOn-7Y-FO9">
+                                <rect key="frame" x="-9" y="207" width="191" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wyi-a7-UQJ">
+                                <rect key="frame" x="223" y="291" width="171" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D1M-iP-hfF">
+                                <rect key="frame" x="178" y="163" width="206" height="110"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jUa-8J-Cl4" id="tqd-p7-aFt"/>
+                                    <outlet property="delegate" destination="jUa-8J-Cl4" id="psq-rv-5QV"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJs-0Y-PoB">
+                                <rect key="frame" x="0.0" y="322" width="154" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rck-4D-Nzh">
+                                <rect key="frame" x="0.0" y="758" width="414" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="cJ7-hl-KdO"/>
+                                </constraints>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="Save:" destination="jUa-8J-Cl4" eventType="touchUpInside" id="phn-Vm-XeZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Rck-4D-Nzh" firstAttribute="trailing" secondItem="8KW-7e-bkm" secondAttribute="trailing" id="7Pi-jj-890"/>
+                            <constraint firstItem="8KW-7e-bkm" firstAttribute="bottom" secondItem="Rck-4D-Nzh" secondAttribute="bottom" constant="20" id="Kyc-sK-OPf"/>
+                            <constraint firstItem="Rck-4D-Nzh" firstAttribute="leading" secondItem="8KW-7e-bkm" secondAttribute="leading" id="RZ9-P3-H1c"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8KW-7e-bkm"/>
                     </view>
+                    <connections>
+                        <outlet property="MovieTitleField" destination="yj8-3m-3qY" id="GW8-8C-725"/>
+                        <outlet property="YearPicker" destination="D1M-iP-hfF" id="LB0-oG-j8Z"/>
+                        <outlet property="overviewField" destination="Wyi-a7-UQJ" id="WaM-df-Trb"/>
+                        <outlet property="posterView" destination="Yq3-59-qOX" id="HTE-v6-nx8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wEa-LH-lJZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="443"/>
+            <point key="canvasLocation" x="1544.9275362318842" y="442.63392857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Movie Detail View-->
         <scene sceneID="NiI-3Y-CLT">
             <objects>
-                <viewController id="5ow-4h-uNM" sceneMemberID="viewController">
+                <viewController id="5ow-4h-uNM" customClass="MovieDetailView" customModule="InstaBugMovies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hH6-O3-Fkv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,6 +247,9 @@
                         <viewLayoutGuide key="safeArea" id="x34-cM-CGs"/>
                     </view>
                     <navigationItem key="navigationItem" id="DfM-qA-510"/>
+                    <connections>
+                        <outlet property="overViewField" destination="BMb-rB-s9E" id="Xod-xt-T8y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cln-aS-3qv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
