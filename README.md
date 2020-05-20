@@ -5,7 +5,7 @@
 
 _Fulfilled by adding a TableView to the Main View COntroller with a section titled All Moviess_
 
-> Users should see for each movie entry: Title, overview, date and poster.
+> Users should see for each movie entry: Title, overview, date(Release year) and poster Image.
 
 _Fulfilled by displaying the required data on the cell and the overview is in a DetialView accessed by Tapping on the Cell_
 
