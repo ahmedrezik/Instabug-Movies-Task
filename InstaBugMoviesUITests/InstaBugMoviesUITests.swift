@@ -62,10 +62,23 @@ var app: XCUIApplication!
        
         
     }
-    func testFailedResponse(){
-        XCUIDevice.shared.siriService.activate(voiceRecognitionText: "Turn off wifi")
-        XCUIDevice.shared.press(XCUIDevice.Button.home)
-        app.launch()
+    func testUI(){
+        //Swipe until the end of the Table, but we limit them to 10 swipes
+        let discovertableviewTable = XCUIApplication().tables["DiscoverTableView"]
+        var i = 0
+        
+       var  count = 0
+        while i < 10 {
+             discovertableviewTable.swipeUp()
+            i = i + 1
+            count = app.activityIndicators.count
+            if count > 0{
+                break
+            }
+        }
+       
+       
+        XCTAssertGreaterThan(count, 0)
     }
    
 

@@ -23,7 +23,8 @@ public class DiscoverVC: UIViewController{
    
     //MARK: VIEW LIFECYCLE METHODS
     public override func viewDidLoad() {
-        discoverTableView.accessibilityIdentifier = "DiscoverTableView"
+        
+        
         // Activity Indicator at the Bottom of tableview
         activityIndicator = LoadMoreActivityIndicator(scrollView: discoverTableView, spacingFromLastCell: 10, spacingFromLastCellWhenLoadMoreActionStart: 60)
         
@@ -32,6 +33,9 @@ public class DiscoverVC: UIViewController{
         
         //Observers whether the User added a New Movie or not
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableView), name: Notification.Name("didCreateMovie"), object: nil)
+        
+        discoverTableView.accessibilityIdentifier = "DiscoverTableView"
+        
     }
     
     //Selector func for Notification
