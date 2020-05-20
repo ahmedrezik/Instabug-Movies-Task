@@ -39,7 +39,7 @@ The Movie Database as required by the Requirments Document
 
 ### Testing 
 
-The project includes 2 testing Target , one for Unit Tests and one for UI Test . Code COvergae =  83.9%
+The project includes 2 testing Targets , one for Unit Tests and one for UI Test . Code Covergae =  83.9%
 
 ### Design
-This project was designed through an MVC Design 
+This project was designed using the MVC Pattern 
